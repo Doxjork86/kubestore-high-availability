@@ -39,16 +39,22 @@ Actualizaciones de versión utilizando la estrategia **Rolling Update**.
 
 ### Auto-Escalado bajo Ataque
 *El HPA detecta un pico de CPU del 118% y escala las réplicas automáticamente.*
-![HPA Scaling](LINK_A_TU_FOTO_HPA_AQUI)
+![HPA Scaling]
+<img width="760" height="122" alt="hpa" src="https://github.com/user-attachments/assets/6948857e-90cc-4297-a743-340b5afa0e57" />
+
 
 ### Actualización sin Cortes (v1 -> v2)
 *El cliente recibe la nueva versión sin interrupción del servicio.*
-![Rolling Update](<img width="759" height="41" alt="image" src="https://github.com/user-attachments/assets/0b62af33-ed37-4f1c-8d93-033c9b27bd23" />
-)
+![Rolling Update]
+<img width="655" height="208" alt="rolling1" src="https://github.com/user-attachments/assets/959a19e1-2ee6-4780-9bd7-271a1ab17d68" />
+<img width="652" height="261" alt="rolling2" src="https://github.com/user-attachments/assets/3b3079a1-77f7-48d0-a4bf-d360cfa81750" />
+<img width="759" height="41" alt="image" src="https://github.com/user-attachments/assets/0b62af33-ed37-4f1c-8d93-033c9b27bd23" />
+
 
 ### Observabilidad
 *Dashboard de Grafana mostrando el consumo de recursos del clúster.*
-![Grafana Dashboard](LINK_A_TU_FOTO_GRAFANA_AQUI)
+![Grafana Dashboard]
+<img width="1603" height="265" alt="grafana" src="https://github.com/user-attachments/assets/1f16e657-4350-47bb-94cf-3af189effb67" />
 
 ## 🛠️ Cómo ejecutar este proyecto
 
