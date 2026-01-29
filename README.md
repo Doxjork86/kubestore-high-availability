@@ -43,7 +43,8 @@ Actualizaciones de versión utilizando la estrategia **Rolling Update**.
 
 ### Actualización sin Cortes (v1 -> v2)
 *El cliente recibe la nueva versión sin interrupción del servicio.*
-![Rolling Update](LINK_A_TU_FOTO_CURL_V2_AQUI)
+![Rolling Update](<img width="759" height="41" alt="image" src="https://github.com/user-attachments/assets/0b62af33-ed37-4f1c-8d93-033c9b27bd23" />
+)
 
 ### Observabilidad
 *Dashboard de Grafana mostrando el consumo de recursos del clúster.*
