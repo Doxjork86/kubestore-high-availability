@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-api
+  namespace: kubestore
+spec:
+  replicas: 2   # ¡Vamos con 2 réplicas de una vez!
+  selector:
+    matchLabels:
+      app: store-api
+  template:
+    metadata:
+      labels:
+        app: store-api
+    spec:
+      containers:
+      - name: api
+        image: store-api:v1
+        imagePullPolicy: Never
+        resources:
+          requests:
+            cpu: "100m"  # Pide 0.1 CPU
+            memory: "64Mi"
+          limits:
+            cpu: "200m"  # Tope de 0.2 CPU (fácil de saturar)
+            memory: "128Mi"  
+        ports:
+        - containerPort: 5000
+        
+        # --- ZONA DE INTELIGENCIA ---
+        # Readiness: ¿Ya cargaste los datos? (Espera 10s iniciales + chequeo)
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        
+        # Liveness: ¿Sigues vivo o te colgaste?
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        # ---------------------------
+
+        env:
+        - name: REDIS_HOST
+          value: "redis-cart" # El nombre del Service de Redis
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-password
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-api-svc
+  namespace: kubestore
+spec:
+  type: NodePort
+  selector:
+    app: store-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
